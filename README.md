@@ -1,2 +1,2 @@
 # linux-prac
-linux学习
+linux学习记录
