@@ -1,0 +1,37 @@
+linxu是一个多用户多任务的操作系统
+
+添加用户：
+useradd dct  默认在家目录 /home/dct下
+创建用户成功后，默认会创建同名的/home/dct目录
+useradd -d /home/test dct 指定家目录
+
+修改密码：
+passwd dct
+
+删除用户：
+userdel dct   删除用户，保留家目录
+userdel -r dct  删除用户以及家目录
+一般情况下删除用户后保留家目录
+
+查询用户信息：
+id dct
+切换用户：
+su - dct  su - root
+查看当前登录用户：
+whoami
+
+用户组：对有共性的多个用户进行统一的管理（授权等）
+添加组：groupadd 组名
+删除组：groupdel 组名
+增加用户直接上组：useradd -g 用户组 用户名
+修改用户所属的组：usermod -g 用户组 用户名
+
+用户和组相关的文件
+/etc/passwd 文件
+用户的配置文件，记录用户的各种信息
+
+/etc/shadow 文件
+口令的配置文件
+
+/etc/group 文件
+组的配置文件，记录linux包含的组的信息

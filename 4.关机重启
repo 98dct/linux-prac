@@ -1,0 +1,8 @@
+shutdown -h now  立刻进行关机
+shutdown -h 1    1分钟后关机
+shutdown -r now  现在重启计算机
+halt  关机
+reboot 重启计算机
+sync  把内存的数据同步到磁盘
+
+目前的shutdown/reboot/halt 等命令在关机前已执行sync指令
