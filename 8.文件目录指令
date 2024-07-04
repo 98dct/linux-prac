@@ -1,0 +1,62 @@
+ls -a 列出所有的文件，包含以.开头的隐藏文件
+ls -l 列表信息比较全
+ls -lh 列表显示的文件的大小不是字节，而是多少M或者多少K或者多少G
+
+pwd:显示当前工作目录的绝对路径
+
+cd ~   :回到家目录
+cd ..  :回到上一级目录
+
+mkdir    :创建目录，只能创建一级目录
+mkdir -p :创建多级目录
+
+rm -rf 文件/目录 : 删除文件和目录就用这个指令
+
+touch：创建空文件
+vim也可以直接打开新文件，输入内容后就创建了文件
+
+cp source dest  :拷贝文件到指定目录
+cp -r  递归复制整个文件夹   cp -r /home/bbb /opt/：将bbb文件夹及其内容拷贝到/opt/下
+\cp -r /home/bbb /opt/   强制覆盖
+
+
+mv:移动文件和目录或者重命名
+mv oldFile newFile             重命名文件
+mv /opt/aaa.txt  /home/dct/    移动文件
+
+
+cat：查看文件
+-n 显示行号
+文件内容比较多时，一般会和more结合使用   cat -n /etc/profile | more
+
+
+echo:输出内容到控制台
+echo $
+
+
+head:显示文件开头的内容。默认显示前10行
+head -n 5 /etc/profile 显示前5行
+
+tail：显示文件尾部的内容，默认显示后10行
+tail -n 5 /etc/profile 显示后5行
+tail -f 实时跟踪文件的更新
+
+
+>  :输出重定向(覆盖写)   echo "hello" > /etc/profile
+>> :追加写             echo "hello" >> /etc/profile
+例如：
+ls -l > aaa.txt
+la -al > aaa.txt
+cat /etc/profile >> aaa.txt
+echo "hello world" >> aaa.txt
+注意：如果 >或者>>后面的文件不存在，则会先创建该文件
+
+
+ln : 软链接，也叫符号链接，类似于windows的快捷方式，存放了链接其他文件的路径
+语法：ln -s [原文件或目录] [软链接名]
+rm -f :删除软链
+注意；创建软链时应该指定源文件绝对路径和软链接的绝对路径！！！
+
+
+history ：显示所有执行的历史命令
+history 10：显示最近10条执行的命令
