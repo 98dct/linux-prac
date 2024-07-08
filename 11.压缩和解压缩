@@ -1,0 +1,22 @@
+
+gzip/gunzip:压缩文件,解压文件
+gzip 文件名   只能将文件压缩为*.gz文件
+gunzip xx.gz
+
+
+zip/unzip:压缩，解压缩文件和文件夹
+zip -r myhome.zip /home/
+unzip -d /opt/tmp/ myhome.zip
+
+
+tar:既可以打包压缩、解压文件，也可以打包压缩、解压文件夹
+后缀是.tar.gz的文件、
+
+压缩多个文件：
+tar -zcvf aaa.tar.gz /home/pig.txt /home/cat.txt
+压缩文件夹：
+tar -zcvf aaa.tar.gz /home/
+解压：
+tar -zxvf aaa.tar.gz
+解压到指定目录：
+tar -zxvf aaa.tar.gz -C /opt/tmp/
