@@ -99,7 +99,7 @@ func test5() {
 			fmt.Println(v)
 		}()
 	}
-	time.Sleep(3 * time.Second)
+	time.Sleep(1 * time.Second)
 
 }
 func main() {
