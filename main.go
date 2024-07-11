@@ -1,7 +1,9 @@
 package main
 
 import (
+	"errors"
 	"fmt"
+	xerr "github.com/pkg/errors"
 	"math"
 	"os"
 	"runtime"
@@ -102,11 +104,56 @@ func test5() {
 	time.Sleep(1 * time.Second)
 
 }
+
+func test6() {
+
+	err1 := errors.New("错误1")
+	err2 := xerr.Wrap(err1, "附加信息")
+	fmt.Println(err2)
+	flag := errors.Is(err2, err1)
+	fmt.Println(flag)
+	err3 := fmt.Errorf("错误包装：%w", err1)
+	fmt.Println(err3)
+	flag2 := errors.Is(err3, err1)
+	fmt.Println(flag2)
+}
+
+func test7() {
+
+	i := 0
+	ch := make(chan struct{}, 1)
+	go func() {
+		i = 1
+		<-ch
+	}()
+
+	ch <- struct{}{}
+	fmt.Println(i)
+
+}
+
+func test8() {
+
+	i := 0
+	ch := make(chan struct{})
+	go func() {
+		i = 1
+		<-ch
+	}()
+
+	ch <- struct{}{}
+	fmt.Println(i)
+
+}
+
 func main() {
 	//test2()
 	//test3()
 	//test4()
-	test5()
+	//test5()
+	//test6()
+	test7()
+	test8()
 }
 
 func keepFirstTwoElementsOnly(foos []Foo) []Foo {
