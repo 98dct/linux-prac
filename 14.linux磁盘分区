@@ -3,3 +3,19 @@ linux采用挂载的机制，将磁盘的分区和目录关联起来
 查看linux磁盘挂载情况
 lsblk  或者 lsblk -f
 
+对sdb磁盘分区
+fdisk /dev/sdb
+
+磁盘分区格式化(格式化后分区才能用，)
+mkfs -t ext4 /dev/sdb1
+ext4是分区类型
+磁盘分区格式化后，会给分区生成唯一的uuid
+
+磁盘分区挂载到目录(临时挂载，重启系统后失效)
+mount /dev/sdb1 /newDisk
+
+磁盘分区卸载目录
+umount /dev/sdb1
+
+磁盘分区永久挂载和卸载
+修改 /etc/fstab  保存后重启
