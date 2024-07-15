@@ -1,0 +1,33 @@
+linux查看ip指令   ifconfig
+windows查看网络配置 ipconfig
+ping 测试主机之间网络连通性
+ping 目的主机（支持ip地址和域名） 测试当前服务器和目的主机网络是否通畅
+
+修改网络配置文件，指定ip
+vim /etc/sysconfig/network-scripts/ifcfg-ens33
+重启网络服务
+service network restart 或者 reboot
+
+
+为了方便记忆，可以給linux系统设置主机名，也可以根据需要修改主机名
+hostname 查看主机名
+vim /etc/hostname 修改主机名 reboot后生效
+
+如何通过主机名找到（ping通）某个linux系统
+配置hosts映射
+
+windows下配置
+C:\windows\System32\drivers\etc\hosts
+例如：192.168.200.130 hspedu100
+
+linux下配置
+vim /etc/hosts 输入
+例如：192.168.200.130 hspedu100
+
+
+DNS: 域名系统，互联网上域名和IP地址相互映射的一个分布式数据库
+当用户在浏览器输入www.baidu.com后，域名解析过程
+客户--》浏览器缓存--》本地dns缓存--》hosts文件--》本地域名服务器--》根域名服务器--》顶级域名服务器--》权威域名服务器
+
+查看本地dns缓存   ipconfig /displaydns
+手动清理dns缓存   ipconfig /flushdns
