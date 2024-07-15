@@ -1,0 +1,21 @@
+df -h 查看系统整体磁盘使用情况
+
+du -h 查询指定目录的磁盘占用情况，默认为当前目录
+-h 带计量单位
+-a 含文件
+--max-depth=1 子目录深度
+-c 列出明细的同时，增加汇总值
+
+举例：du -hac /opt
+
+应用：
+1.统计/opt下文件个数
+ls -l /opt | grep "^-" | wc -l
+2.统计/opt下目录个数
+ls -l /opt | grep "^d" | wc -l
+3.统计/opt目录下文件个数，包含子文件夹里的
+ls -lR /opt | grep "^-" | wc -l
+4.统计/opt目录下目录个数，包含子文件夹里的
+ls -lR /opt | grep "^-" | wc -l
+5.以树状形式显示目录结构
+tree /opt  没有tree指令，就安装yum install tree
