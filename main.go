@@ -7,6 +7,7 @@ import (
 	"math"
 	"os"
 	"runtime"
+	"sync"
 	"time"
 )
 
@@ -146,14 +147,75 @@ func test8() {
 
 }
 
+type person struct {
+	name string
+	age  int
+}
+
+func test9() {
+
+	ptr := &person{
+		name: "dct",
+		age:  25,
+	}
+
+	res := make(map[string]*person)
+
+	res["dct"] = ptr
+	fmt.Println(res["dct"].name, res["dct"].age)
+
+	ptr.age = 26
+
+	fmt.Println(res["dct"].name, res["dct"].age)
+}
+
+type Donation struct {
+	cond    *sync.Cond
+	balance int
+}
+
+func test10() {
+	donation := &Donation{
+		cond:    sync.NewCond(&sync.Mutex{}),
+		balance: 0,
+	}
+
+	// 监听器
+	f := func(goal int) {
+		donation.cond.L.Lock()
+		for donation.balance < goal {
+			// 先解锁，阻塞goroutine，在加锁
+			// 一定程度上减少忙轮询
+			donation.cond.Wait()
+		}
+		fmt.Printf("%d$ goal reache\n", donation.balance)
+		donation.cond.L.Unlock()
+	}
+
+	go f(10)
+	go f(15)
+
+	// 更新器
+	for {
+		time.Sleep(time.Second)
+		donation.cond.L.Lock()
+		donation.balance++
+		donation.cond.L.Unlock()
+		donation.cond.Broadcast()
+	}
+
+}
 func main() {
 	//test2()
 	//test3()
 	//test4()
 	//test5()
 	//test6()
-	test7()
-	test8()
+	//test7()
+	//test8()
+	//test9()
+
+	test10()
 }
 
 func keepFirstTwoElementsOnly(foos []Foo) []Foo {
