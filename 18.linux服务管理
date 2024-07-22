@@ -20,3 +20,24 @@ firewall指令
 关闭端口：firewall-cmd --permanent --remove-port=端口号/协议
 重新载入才能生效：firewall-cmd --reload
 查询端口是否开放：firewall-cmd --query-port=端口号/协议
+
+
+动态监控系统
+top 与ps指令很相似，但是可以动态监控进程
+选项
+-d 指定top命令每几秒更新，默认是3秒
+-i 不显示任何闲置或者僵尸进程
+-p 通过指定进程ID仅仅监控某个进程的状态
+交互模式
+P 以cpu使用率排序  默认此选项
+M 以内存使用率排序
+N 以PID排序
+
+
+netstat: 查看系统网络情况
+-an : 按一定顺序排列输出
+-p : 显示哪个进程在调用
+例如: netstat -anp
+
+检测主机网络连接命令：
+ping ip地址

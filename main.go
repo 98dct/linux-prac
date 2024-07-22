@@ -9,6 +9,7 @@ import (
 	"runtime"
 	"sync"
 	"time"
+	"unsafe"
 )
 
 func test1() {
@@ -205,6 +206,26 @@ func test10() {
 	}
 
 }
+
+func test11() {
+
+	time.NewTicker(1000)
+	time.NewTicker(1000 * time.Nanosecond)
+	time.NewTicker(time.Second)
+
+	sizeof := unsafe.Sizeof(int64(1))
+	fmt.Println(sizeof)
+	//t := time.Time{}
+	//db, _ := sql.Open("mysql", "dsn")
+	//
+	//http.Client{
+	//	Transport:     nil,
+	//	CheckRedirect: nil,
+	//	Jar:           nil,
+	//	Timeout:       0,
+	//}
+
+}
 func main() {
 	//test2()
 	//test3()
@@ -214,8 +235,8 @@ func main() {
 	//test7()
 	//test8()
 	//test9()
-
-	test10()
+	//test10()
+	test11()
 }
 
 func keepFirstTwoElementsOnly(foos []Foo) []Foo {
