@@ -1,0 +1,30 @@
+rpm:linux包管理工具  rpm文件类似于windows的setup.exe文件
+
+查询已安装的rpm列表
+rpm -qa | grep XXX
+rmp包名的基本格式 firefox-60.2.2-1.el7.centos.x86_64
+名称：firefox
+版本号：60.2.2-1
+使用操作系统：el7.centos.x86_64
+表示centos.x的64为操作系统
+如果是i686、i386表示32位系统，noarch表示通用
+
+其他查询指令
+rpm -q 软件包名  查询软件包是否安装
+rpm -qi 软件包名 查询软件包信息
+rpm -ql 软件包名 查询软件包中的文件
+rpm -qf 文件全路径名 查询文件所属的软件包
+
+rpm卸载
+rpm -e RPM包的名称
+rpm -e firefox
+
+强制卸载
+rpm -e --nodeps foo
+
+rpm安装
+rpm -ivh RPM包的全路径名称
+参数解释
+-i=install 安装
+-v=verbose 提示
+-h=hash 进度条

@@ -1,0 +1,9 @@
+yum 基于rpm的包管理器 可以自动从指定的服务器自动下载RPM包并且安装，可以自动处理依赖关系，
+并且一次安装所有的依赖的软件包
+
+查看yum服务器是否有需要安装的软件
+yum list
+yum list | grep xxx
+
+安装指定的yum包
+yum install xxx

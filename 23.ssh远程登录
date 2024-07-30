@@ -1,0 +1,14 @@
+ssh是建立在应用层和拆念书层基础上的安全协议
+使用ssh按安装对应的服务器和客户端，例如；A机器想要被B机器远程控制，A机器需要安装ssh服务器，B机器需要安装ssh客户端
+
+linux上的ssh服务器程序是sshd， 端口是22
+
+ubuntu安装ssh
+sudo apt-get install openssh-server
+执行后会安装ssh服务端和客户端
+service sshd restart
+执行后启动sshd服务，监听22端口
+
+远程登录
+ssh hspecd@192.168.8.999
+ssh hspecd@example.com

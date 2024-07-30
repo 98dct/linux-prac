@@ -1,0 +1,8 @@
+apt是ubuntu下的包管理工具，可以进行软件包的安装、删除、清理等
+
+sudo apt-get update 更新源
+sudo apt-get install package 安装包
+sudo apt-get remove package 删除包
+
+sudo apt-cache show package  获取包的相关信息，如说明、大小、版本
+sudo apt-get source package 下载包的源代码
