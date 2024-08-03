@@ -1,0 +1,34 @@
+linux系统日志所在目录
+/var/log/
+
+常用日志文件
+/var/log/boot.log     系统启动日志
+/var/log/cron      记录系统定时任务相关的日志
+/var/log/lastlog   记录系统中所有用户最后一次登录时间的日志，这个文件也是二进制文件  用lastlog命令查看
+/var/log/maillog   记录邮件信息的日志
+/var/log/messages  记录系统重要消息的日志，系统出现问题，首先要查询这个文件
+/var/log/secure    记录验证和授权方面的信息，涉及账户和密码的程序都会记录，比如系统的登录，ssh登录，su切换用户，sudo授权
+添加用户，修改用户密码都会记录
+/var/tun/ulmp      记录系统已经登录过的用户   who查看
+
+查看linux中rsyslogd是否启动
+ps -aux | grep rsyslogd
+
+查看rsyslog服务的自启动状态
+systemctl list-unit-files | grep "rsyslog"
+
+/etc/rsyslog.conf 配置里面的内容，可以将系统服务产生的日志记录到指定的文件中
+*.*
+第一个*是日志类型，第二个*是日志级别
+
+
+日志轮替：
+centos7使用logrotate进行日志轮替管理，可以修改/etc/logrotate.conf的dateext参数
+自定义日志轮替
+在/etc/logrotate.d目录在定义
+
+
+查看内存日志
+journalctl   查看全部
+journalctl -n 3 查看最新的三条
+journalctl -p err 查看报错日志
