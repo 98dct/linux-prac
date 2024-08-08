@@ -1,0 +1,46 @@
+1.分析日志访问量(t.log)，将各个ip地址截取，统计出现次数，按从大到小排序
+vim a.txt 如下所示
+http://192.168.200.10/index1.html
+http://192.168.200.10/index2.html
+http://192.168.200.20/index1.html
+http://192.168.200.30/index1.html
+http://192.168.200.40/index1.html
+http://192.168.200.30/order.html
+http://192.168.200.10/order.html
+
+cat t.txt | cut -d '/' -f 3 | sort | uniq -c | sort -r
+
+2.统计连接到服务器的各个ip情况，按连接数从大到小排序
+netstat -anp显示
+tcp        0      0 192.168.8.100:9092      172.21.0.5:57778        FIN_WAIT2   4584/docker-proxy
+tcp        0      0 192.168.8.100:22        192.168.8.1:50521       ESTABLISHED 3464/sshd: root@pts
+tcp        0      0 192.168.8.100:22        192.168.8.1:51387       ESTABLISHED 6264/sshd: root@pts
+
+netstat -anp | grep ESTABLISHED | awk -F " " '{print $5}' | cut -d ":" -f 1 | sort | uniq -c | sort -r
+统计前两个ip
+| head 2
+
+3.nginx的常用模块
+rewrite模块 实现重写功能
+access模块  来源控制
+ssl模块  安全加密
+ngx_http_gzip_module  网络传输压缩模块
+ngx_http_proxy_module  模块实现代理
+ngx_http_upstream_module  定义后端服务器列表
+ngx_cache_purge  缓存清除功能
+
+4.遍历文件中的每一行后求和
+vim aa.txt
+张三 40
+李四 50
+王五 60
+cat aa.txt | awk -F " " '{sum+=$2} END {print sum}'
+
+注意：
+awk中 $0代表整行文本  $1代表第一列
+
+5.查找当前文件夹下（/home）所有文本文件内容包含有字符“cat”的文件名称
+grep -r "cat" /home | cut -d ":" -f 1
+
+6.统计某个目录所有的文件个数（包含文件夹）和所有文件总行数
+find /home/test -name "*.*" | xargs wc -l
